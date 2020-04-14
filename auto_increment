@@ -1,0 +1,34 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Problem1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Book number");
+        String character = sc.nextLine().toUpperCase();
+
+        char first = character.charAt(0);
+        char second = character.toCharArray()[1];
+        String digit[] = character.substring(2, character.length()).split("");
+        int integer = Integer.parseInt(digit[digit.length - 1]);
+
+        if (second == 'Z') {
+            if (first != 'Z') {
+                first += 1;
+                second = 'A';
+                integer += 1;
+                digit[digit.length - 1] = Integer.toString(integer);
+            }
+        }
+        else {
+                second += 1;
+                integer += 1;
+                digit[digit.length - 1] = Integer.toString(integer);
+        }
+        System.out.println("Next Book Number");
+            System.out.print(first + "" + second);
+            Arrays.stream(digit).forEach(System.out::print);
+            sc.close();
+
+    }
+}
