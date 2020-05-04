@@ -9,25 +9,24 @@ public class Problem1 {
 
         char first = character.charAt(0);
         char second = character.toCharArray()[1];
-        String digit[] = character.substring(2, character.length()).split("");
-        int integer = Integer.parseInt(digit[digit.length - 1]);
+//        String digit[] = character.substring(2, character.length()).split("");
+        int integer = Integer.parseInt(character.substring(2,character.length()));
 
-        if (second == 'Z') {
-            if (first != 'Z') {
-                first += 1;
+        if(integer<999999) {
+            integer++;
+        }
+        else if (integer>=999999){
+            integer = 0;
+            if (second != 'Z'){
+                second += 1;
+            }
+            else {
                 second = 'A';
-                integer += 1;
-                digit[digit.length - 1] = Integer.toString(integer);
+                first += 1;
             }
         }
-        else {
-                second += 1;
-                integer += 1;
-                digit[digit.length - 1] = Integer.toString(integer);
-        }
         System.out.println("Next Book Number");
-            System.out.print(first + "" + second);
-            Arrays.stream(digit).forEach(System.out::print);
+            System.out.print(String.format("%s%s%06d",first,second,integer));
             sc.close();
 
     }
